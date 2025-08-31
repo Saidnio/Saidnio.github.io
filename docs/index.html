@@ -3,107 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ingeniero Mecánico | Especialista en Diseño CAD</title>
-    <meta name="description" content="Portafolio profesional de Ingeniero Mecánico especializado en diseño CAD, modelado 3D, análisis estructural y desarrollo de productos industriales.">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <title>Heyber Niño Pacheco | Ingeniero Mecánico Especialista en SolidWorks</title>
+    <meta name="description" content="Ingeniero Mecánico con 3 años de experiencia en diseño 3D, simulación FEA y desarrollo de productos usando SolidWorks. Servicios profesionales para la industria.">
     
     <style>
+        /* Importar fuentes */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap');
+
+        /* Variables CSS */
+        :root {
+            --primary-blue: #1E3A8A;
+            --steel-gray: #64748B;
+            --tech-orange: #F97316;
+            --light-bg: #F8FAFC;
+            --white: #FFFFFF;
+            --dark-text: #1F2937;
+            --light-text: #6B7280;
+            --gradient: linear-gradient(135deg, var(--primary-blue) 0%, #3B82F6 100%);
+        }
+
+        /* Reset y estilos base */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2d3748;
-            --accent-color: #3182ce;
-            --accent-hover: #2c5282;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --text-light: #718096;
-            --bg-primary: #ffffff;
-            --bg-secondary: #f7fafc;
-            --bg-dark: #1a202c;
-            --border-color: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-primary);
+            color: var(--dark-text);
+            overflow-x: hidden;
         }
 
-        /* Header & Navigation */
-        .header {
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .gear-loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            border-top-color: var(--tech-orange);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header */
+        header {
             position: fixed;
             top: 0;
             width: 100%;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(30, 58, 138, 0.1);
         }
 
-        .nav-container {
+        .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 2rem;
         }
 
         .logo {
-            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
             font-weight: 700;
-            color: var(--primary-color);
+            font-size: 1.5rem;
+            color: var(--primary-blue);
             text-decoration: none;
         }
 
-        .nav-menu {
+        .logo::before {
+            content: '⚙';
+            font-size: 2rem;
+            margin-right: 0.5rem;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        nav ul {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
 
-        .nav-item a {
+        nav a {
             text-decoration: none;
-            color: var(--text-primary);
+            color: var(--dark-text);
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
         }
 
-        .nav-item a:hover {
-            color: var(--accent-color);
+        nav a:hover {
+            color: var(--primary-blue);
         }
 
-        .nav-item a::after {
+        nav a::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
             bottom: -5px;
             left: 0;
-            background: var(--accent-color);
+            width: 0;
+            height: 2px;
+            background: var(--tech-orange);
             transition: width 0.3s ease;
         }
 
-        .nav-item a:hover::after {
+        nav a:hover::after {
             width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 4px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-blue);
+            transition: 0.3s;
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            min-height: 100vh;
+            height: 100vh;
+            background: var(--gradient);
             display: flex;
             align-items: center;
             position: relative;
@@ -117,10 +175,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill-opacity='0.03'%3E%3Cpolygon fill='%23000' points='50 0 60 40 100 50 60 60 50 100 40 60 0 50 40 40'/%3E%3C/g%3E%3C/svg%3E") center/80px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"><path d="M20 20h60v60H20z" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/></svg>') repeat;
+            animation: float 20s ease-in-out infinite;
         }
 
-        .hero-content {
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
@@ -132,185 +196,119 @@
             z-index: 1;
         }
 
-        .hero-text h1 {
+        .hero-content h1 {
             font-size: 3.5rem;
             font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
+            color: var(--white);
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
-        .hero-subtitle {
+        .hero-content .subtitle {
             font-size: 1.3rem;
-            color: #a0aec0;
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 2rem;
-            font-weight: 300;
         }
 
-        .hero-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            color: #cbd5e0;
-        }
-
-        .cta-buttons {
+        .hero-buttons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
         }
 
-        .btn-primary, .btn-secondary {
+        .btn {
             padding: 1rem 2rem;
             border: none;
             border-radius: 8px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
         }
 
         .btn-primary {
-            background: var(--accent-color);
-            color: white;
+            background: var(--tech-orange);
+            color: var(--white);
         }
 
         .btn-primary:hover {
-            background: var(--accent-hover);
+            background: #ea580c;
             transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 20px rgba(249, 115, 22, 0.3);
         }
 
         .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .btn-secondary:hover {
-            background: white;
-            color: var(--primary-color);
+            background: var(--white);
+            color: var(--primary-blue);
         }
 
         .hero-visual {
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .cad-showcase {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 2rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .rotating-gear {
+            width: 300px;
+            height: 300px;
+            position: relative;
         }
 
-        .cad-window {
-            background: #2d3748;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .window-header {
+        .gear {
+            position: absolute;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
         }
 
-        .window-controls {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .control {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-        }
-
-        .close { background: #ff5f57; }
-        .minimize { background: #ffbd2e; }
-        .maximize { background: #28ca42; }
-
-        .cad-content {
-            background: #1a202c;
-            height: 200px;
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .grid-pattern {
-            position: absolute;
+        .gear-1 {
+            width: 150px;
+            height: 150px;
             top: 0;
+            left: 75px;
+            animation: rotate 15s linear infinite;
+        }
+
+        .gear-2 {
+            width: 100px;
+            height: 100px;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
+            animation: rotate 12s linear infinite reverse;
         }
 
-        .cad-object {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 120px;
+        .gear-3 {
+            width: 80px;
             height: 80px;
-            background: linear-gradient(45deg, #3182ce, #63b3ed);
-            border-radius: 8px;
-            box-shadow: 0 8px 32px rgba(49, 130, 206, 0.3);
-            animation: rotate3d 6s ease-in-out infinite;
+            bottom: 20px;
+            right: 0;
+            animation: rotate 8s linear infinite;
         }
 
-        @keyframes rotate3d {
-            0%, 100% { transform: translate(-50%, -50%) rotateY(0deg) rotateX(0deg); }
-            25% { transform: translate(-50%, -50%) rotateY(15deg) rotateX(5deg); }
-            50% { transform: translate(-50%, -50%) rotateY(0deg) rotateX(10deg); }
-            75% { transform: translate(-50%, -50%) rotateY(-15deg) rotateX(5deg); }
+        /* Servicios */
+        .services {
+            padding: 6rem 0;
+            background: var(--light-bg);
         }
 
-        .skills-preview {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .skill-item {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-            backdrop-filter: blur(5px);
-        }
-
-        .skill-item h4 {
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-            color: #e2e8f0;
-        }
-
-        .skill-icon {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Skills Section */
-        .skills-section {
-            padding: 5rem 2rem;
-            background: var(--bg-secondary);
-        }
-
-        .section-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-header {
@@ -318,501 +316,844 @@
             margin-bottom: 4rem;
         }
 
-        .section-title {
+        .section-header h2 {
             font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary-blue);
             margin-bottom: 1rem;
         }
 
-        .section-subtitle {
+        .section-header p {
             font-size: 1.2rem;
-            color: var(--text-secondary);
+            color: var(--light-text);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .skills-grid {
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .skill-card {
-            background: white;
+        .service-card {
+            background: var(--white);
             padding: 2rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-card::before {
+        .service-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-color), #63b3ed);
+            background: var(--tech-orange);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
         }
 
-        .skill-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .service-card:hover::before {
+            transform: scaleX(1);
         }
 
-        .skill-icon-large {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-color);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
             font-size: 1.5rem;
-            color: white;
+            margin-bottom: 1rem;
+            color: var(--dark-text);
         }
 
-        .skill-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--primary-color);
+        .service-card ul {
+            list-style: none;
+            margin-top: 1rem;
         }
 
-        .skill-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+        .service-card li {
+            padding: 0.5rem 0;
+            color: var(--light-text);
+            position: relative;
+            padding-left: 1.5rem;
         }
 
-        .skill-tags {
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--tech-orange);
+            font-weight: bold;
+        }
+
+        /* Portfolio */
+        .portfolio {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .portfolio-filters {
             display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
             flex-wrap: wrap;
-            gap: 0.5rem;
         }
 
-        .skill-tag {
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--steel-gray);
+            background: transparent;
+            color: var(--steel-gray);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-weight: 500;
         }
 
-        /* Projects Section */
-        .projects-section {
-            padding: 5rem 2rem;
-            background: var(--bg-primary);
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
         }
 
-        .projects-grid {
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
         }
 
         .project-card {
-            background: white;
-            border-radius: 16px;
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .project-image {
-            height: 220px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 200px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
             position: relative;
             overflow: hidden;
         }
 
-        .project-image::after {
-            content: '🔧';
+        .project-image::before {
+            content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 3rem;
-            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>') repeat;
         }
 
         .project-content {
-            padding: 2rem;
+            padding: 1.5rem;
         }
 
         .project-title {
             font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-text);
         }
 
         .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: var(--accent-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--accent-color);
-            text-decoration: none;
+            color: var(--tech-orange);
             font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
         }
 
-        .project-link:hover {
-            color: var(--accent-hover);
+        .project-description {
+            color: var(--light-text);
+            line-height: 1.6;
         }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 2rem;
-            background: var(--bg-dark);
-            color: white;
+        /* Skills */
+        .skills {
+            padding: 6rem 0;
+            background: var(--light-bg);
         }
 
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
 
-        .contact-title {
-            font-size: 2.5rem;
+        .software-skills, .specialties {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-item {
             margin-bottom: 2rem;
         }
 
-        .contact-description {
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            color: #a0aec0;
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
         }
 
-        .contact-info {
+        .skill-name {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .skill-level {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #E5E7EB;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        .specialty-list {
+            list-style: none;
+        }
+
+        .specialty-list li {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            border-left: 4px solid var(--tech-orange);
+            transition: all 0.3s ease;
+        }
+
+        .specialty-list li:hover {
+            background: #EDF2F7;
+            transform: translateX(5px);
+        }
+
+        /* About */
+        .about {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .about-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: var(--gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--light-text);
+            margin-bottom: 2rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .process-step {
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--tech-orange);
+            color: var(--white);
+            border-radius: 50%;
+            line-height: 30px;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: var(--light-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--tech-orange);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .testimonial-role {
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #E5E7EB;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--light-bg);
+            border-radius: 8px;
         }
 
         .contact-icon {
             font-size: 1.5rem;
-            color: var(--accent-color);
+            color: var(--tech-orange);
+            margin-right: 1rem;
+            width: 30px;
         }
 
         /* Footer */
-        .footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem;
+        footer {
+            background: var(--primary-blue);
+            color: var(--white);
             text-align: center;
+            padding: 2rem 0;
         }
 
-        /* Mobile Responsive */
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--light-text);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
+            .menu-toggle {
+                display: flex;
             }
 
-            .hero-content {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            .hero-container {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 2rem;
             }
 
-            .hero-text h1 {
+            .hero-content h1 {
                 font-size: 2.5rem;
             }
 
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .skills-grid,
-            .projects-grid {
+            .skills-container,
+            .about-container,
+            .contact-container {
                 grid-template-columns: 1fr;
             }
+
+            .rotating-gear {
+                width: 200px;
+                height: 200px;
+            }
+
+            .gear-1 { width: 100px; height: 100px; left: 50px; }
+            .gear-2 { width: 70px; height: 70px; }
+            .gear-3 { width: 50px; height: 50px; }
+        }
+
+        /* Animaciones de entrada */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide/Show classes para filtros */
+        .project-card.hidden {
+            display: none;
         }
     </style>
 </head>
-
 <body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="gear-loader"></div>
+    </div>
+
     <!-- Header -->
-    <header class="header">
-        <nav class="nav-container">
-            <a href="#" class="logo">Ing. Mecánico</a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#inicio">Inicio</a></li>
-                <li class="nav-item"><a href="#habilidades">Habilidades</a></li>
-                <li class="nav-item"><a href="#proyectos">Proyectos</a></li>
-                <li class="nav-item"><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">Heyber Niño Engineering</a>
+            <nav>
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="#inicio" onclick="scrollTo('inicio')">Inicio</a></li>
+                    <li><a href="#servicios" onclick="scrollTo('servicios')">Servicios</a></li>
+                    <li><a href="#portafolio" onclick="scrollTo('portafolio')">Portafolio</a></li>
+                    <li><a href="#sobre-mi" onclick="scrollTo('sobre-mi')">Sobre Mí</a></li>
+                    <li><a href="#contacto" onclick="scrollTo('contacto')">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Ingeniero Mecánico<br>Especialista en CAD</h1>
-                <p class="hero-subtitle">Diseño · Innovación · Precisión</p>
-                <p class="hero-description">
-                    Transformo ideas en realidades tangibles a través del diseño mecánico avanzado, 
-                    modelado 3D y análisis de ingeniería. Con expertise en software CAD de última generación 
-                    y metodologías de desarrollo de productos.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#proyectos" class="btn-primary">
-                        📋 Ver Proyectos
-                    </a>
-                    <a href="#contacto" class="btn-secondary">
-                        💼 Contactar
-                    </a>
+    <section id="inicio" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Ingeniero Mecánico<br>Especialista en Diseño 3D</h1>
+                <p class="subtitle">Transformo ideas en productos reales usando SolidWorks y simulación avanzada</p>
+                <div class="hero-buttons">
+                    <a href="#portafolio" class="btn btn-primary" onclick="scrollTo('portafolio')">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-secondary" onclick="scrollTo('contacto')">Solicitar Cotización</a>
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="cad-showcase">
-                    <div class="cad-window">
-                        <div class="window-header">
-                            <div class="window-controls">
-                                <div class="control close"></div>
-                                <div class="control minimize"></div>
-                                <div class="control maximize"></div>
-                            </div>
-                            <span style="color: #a0aec0; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">AutoCAD - Proyecto_Mecanico_V2.dwg</span>
-                        </div>
-                        <div class="cad-content">
-                            <div class="grid-pattern"></div>
-                            <div class="cad-object"></div>
-                        </div>
-                    </div>
-                    <div class="skills-preview">
-                        <div class="skill-item">
-                            <div class="skill-icon">🔧</div>
-                            <h4>Software CAD</h4>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">📐</div>
-                            <h4>SolidWorks</h4>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">⚙️</div>
-                            <h4>Diseño Mecánico</h4>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-icon">🔬</div>
-                            <h4>Análisis simulación</h4>
-                        </div>
-                    </div>
+                <div class="rotating-gear">
+                    <div class="gear gear-1">⚙</div>
+                    <div class="gear gear-2">🔧</div>
+                    <div class="gear gear-3">⚙</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section class="skills-section" id="habilidades">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Competencias Técnicas</h2>
-                <p class="section-subtitle">Especialización en herramientas CAD y metodologías de ingeniería</p>
+    <!-- Servicios -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Servicios Especializados</h2>
+                <p>Soluciones integrales de ingeniería mecánica para el desarrollo de productos innovadores</p>
             </div>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-large">🔧</div>
-                        <div>
-                            <h3 class="skill-title">Software CAD Avanzado</h3>
-                        </div>
-                    </div>
-                    <p class="skill-description">
-                        Dominio experto en software de diseño asistido por computadora para modelado 3D, 
-                        documentación técnica y simulación de ensambles complejos.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">AutoCAD</span>
-                        <span class="skill-tag">SolidWorks</span>
-                        <span class="skill-tag">Autodesk Inventor</span>
-                        <span class="skill-tag">Fusion 360</span>
-                        <span class="skill-tag">CATIA</span>
-                    </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎯</div>
+                    <h3>Diseño 3D y Modelado</h3>
+                    <p>Desarrollo de modelos paramétricos precisos y ensambles complejos</p>
+                    <ul>
+                        <li>Modelado paramétrico en SolidWorks</li>
+                        <li>Diseño de ensambles complejos</li>
+                        <li>Documentación técnica y planos</li>
+                        <li>Renderizado fotorrealista</li>
+                    </ul>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-large">🔬</div>
-                        <div>
-                            <h3 class="skill-title">Análisis y Simulación</h3>
-                        </div>
-                    </div>
-                    <p class="skill-description">
-                        Análisis estático mediante herramientas FEA/CFD para 
-                        validación y optimización de diseños antes de la manufactura.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Solidworks</span>
-                        <span class="skill-tag">SolidWorks Simulation</span>
-                        <span class="skill-tag">Render</span>
-                        <span class="skill-tag">Solidworks animation</span>
-                    </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔬</div>
+                    <h3>Simulación y Análisis</h3>
+                    <p>Validación virtual de diseños mediante análisis de elementos finitos</p>
+                    <ul>
+                        <li>Análisis de esfuerzos (FEA)</li>
+                        <li>Análisis modal y dinámico</li>
+                        <li>Análisis térmico</li>
+                        <li>Optimización topológica</li>
+                    </ul>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-large">⚙️</div>
-                        <div>
-                            <h3 class="skill-title">Ingeniería de Manufactura</h3>
-                        </div>
-                    </div>
-                    <p class="skill-description">
-                        Diseño para manufactura (DFM), selección de materiales, tolerancias y 
-                        especificaciones técnicas para procesos industriales.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">GD&T</span>
-                        <span class="skill-tag">Mastercam</span>
-                        <span class="skill-tag">DFM/DFA</span>
-                        <span class="skill-tag">ISO Standards</span>
-                    </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3>Desarrollo de Productos</h3>
+                    <p>Desde el concepto hasta la manufactura, desarrollo integral de productos</p>
+                    <ul>
+                        <li>Prototipado virtual</li>
+                        <li>Optimización de diseño</li>
+                        <li>Preparación para manufactura (DFM)</li>
+                        <li>Análisis de costos</li>
+                    </ul>
                 </div>
-
-                <div class="skill-card">
-                    <div class="skill-header">
-                        <div class="skill-icon-large">📊</div>
-                        <div>
-                            <h3 class="skill-title">Gestión de Proyectos</h3>
-                        </div>
-                    </div>
-                    <p class="skill-description">
-                        Liderazgo de proyectos de ingeniería, coordinación multidisciplinaria y 
-                        entrega de soluciones técnicas en tiempo y presupuesto.
-                    </p>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Project Management</span>
-                        <span class="skill-tag">PLM</span>
-                        <span class="skill-tag">Lean Manufacturing</span>
-                        <span class="skill-tag">Six Sigma</span>
-                    </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
+                    <h3>Automatización CAD</h3>
+                    <p>Optimización de flujos de trabajo mediante automatización inteligente</p>
+                    <ul>
+                        <li>Macros de SolidWorks</li>
+                        <li>Configuraciones automáticas</li>
+                        <li>Templates y bibliotecas</li>
+                        <li>API personalizada</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section class="projects-section" id="proyectos">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Proyectos Destacados</h2>
-                <p class="section-subtitle">Casos de éxito en diseño mecánico e ingeniería</p>
+    <!-- Portfolio -->
+    <section id="portafolio" class="portfolio">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Portafolio Técnico</h2>
+                <p>Proyectos destacados que demuestran expertise en diseño mecánico y simulación</p>
             </div>
-            <div class="projects-grid">
-              <div class="project-card">
-                 <div class="project-image">
-                   <img src="img/Motor estrella.jpg" 
-                    alt="Motor estrella"
-                    style="width: 100%; height: 100%; object-fit: cover;"
-                    loading="lazy">
-                  </div>
-                  <div class="project-content">
-                  <h3 class="project-title">Motor estrella</h3>
-                  <p class="project-description">
-                  Rediseño completo de sistema de transmisión para reducir peso en 15% 
-                  manteniendo especificaciones de torque. Incluye análisis FEA y optimización topológica.
-                  </p>
-                 <div class="project-tech">
-                     <span class="tech-tag">SolidWorks</span>
-                     <span class="tech-tag">ANSYS</span>
-                     <span class="tech-tag">GD&T</span>
-                     </div>
-                          <div class="project-links">
-                          <a href="#" class="project-link">Ver Detalles →</a>
-                      </div>
-                      </div>
-</div>
-
-
-                <div class="project-card">
-                    <div class="project-image" >
-                        <img src="img/render puente.jpg" alt="Estructura de puente metálico" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
+            
+            <div class="portfolio-filters fade-in">
+                <button class="filter-btn active" onclick="filterProjects('all')">Todos</button>
+                <button class="filter-btn" onclick="filterProjects('industrial')">Maquinaria Industrial</button>
+                <button class="filter-btn" onclick="filterProjects('automotive')">Automotriz</button>
+                <button class="filter-btn" onclick="filterProjects('aerospace')">Aeroespacial</button>
+                <button class="filter-btn" onclick="filterProjects('medical')">Médico</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="project-card fade-in" data-category="aerospace" onclick="openModal('turbina')">
+                    <div class="project-image"> <img src="img/helice 2.jpg"  style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-image"></div>
                     <div class="project-content">
-                        <h3 class="project-title">Análisis FEM de Estructura de Puente</h3>
-                        <p class="project-description">
-                            Diseño estructural completo desde cero de estructura de puente metálico. 
-                            Análisis FEM exhaustivo para validación de cargas, deflexiones y factores de seguridad. 
-                            Optimización de peso y resistencia estructural.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">SolidWorks</span>
-                            <span class="tech-tag">ANSYS</span>
-                            <span class="tech-tag">FEM Analysis</span>
-                            <span class="tech-tag">Steel Design</span>
+                        <h3 class="project-title">Diseño de Turbina de Avión</h3>
+                        <p class="project-tech">SolidWorks • ANSYS • CFD</p>
+                        <p class="project-description">Desarrollo de turbina aeronáutica con optimización aerodinámica y análisis de fluidos computacional para máxima eficiencia.</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" data-category="automotive" onclick="openModal('diferencial')">
+                    <div class="project-image"><img src="img/Motor estrella.jpg"  style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Sistema Diferencial Automotriz</h3>
+                        <p class="project-tech">SolidWorks • Simulation • DFM</p>
+                        <p class="project-description">Diseño y optimización de diferencial automotriz con análisis de esfuerzos y preparación para manufactura en serie.</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" data-category="medical" onclick="openModal('protesis')">
+                    <div class="project-image">🦴</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Prótesis de Rodilla con Análisis FEA</h3>
+                        <p class="project-tech">SolidWorks • ANSYS • Biomecánica</p>
+                        <p class="project-description">Desarrollo de prótesis de rodilla biomimética con análisis estructural y validación biomecánica.</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" data-category="industrial" onclick="openModal('puente')">
+                    <div class="project-image"><img src="img/render puente.jpg" alt="Estructura de puente metálico" style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Estructura de Puente con Análisis FEA</h3>
+                        <p class="project-tech">SolidWorks • ANSYS • Estructural</p>
+                        <p class="project-description">Diseño estructural de puente peatonal con análisis de cargas dinámicas y optimización de peso.</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" data-category="aerospace" onclick="openModal('componentes')">
+                    <div class="project-image"><img src="img/helice 2.jpg"  style="width: 100%; height: 100%; object-fit: cover;"></div>
+                    <div class="project-content">
+                        <h3 class="project-title">Componentes Aeroespaciales Ligeros</h3>
+                        <p class="project-tech">SolidWorks • Topology Optimization</p>
+                        <p class="project-description">Desarrollo de componentes ultraligeros mediante optimización topológica para aplicaciones aeroespaciales.</p>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in" data-category="automotive" onclick="openModal('caja')">
+                    <div class="project-image">🔧</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Caja de Cambios Automatizada</h3>
+                        <p class="project-tech">SolidWorks • Motion Study • FEA</p>
+                        <p class="project-description">Diseño de transmisión automática con estudio de movimiento y análisis de durabilidad de componentes.</p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Expertise Técnico</h2>
+                <p>Dominio avanzado de herramientas CAD/CAE y especialidades de ingeniería</p>
+            </div>
+            <div class="skills-container">
+                <div class="software-skills fade-in">
+                    <h3>Software Especializado</h3>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">SolidWorks</span>
+                            <span class="skill-level">3 años - Avanzado</span>
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Ver Detalles →</a>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">ANSYS Workbench</span>
+                            <span class="skill-level">1 año - Intermedio</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Inventor</span>
+                            <span class="skill-level">2 años - Intermedio</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">Creo</span>
+                            <span class="skill-level">1 año - Intermedio</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">3DExperience</span>
+                            <span class="skill-level">1 año - Intermedio</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="60%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span class="skill-name">MATLAB</span>
+                            <span class="skill-level">1 año - Intermedio</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="65%"></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                         <img src="img/helice 2.jpg" alt="Hélice" style="width: 100%; height: 100%; object-fit: cover;">
-                    </div>
-                    <div class="project-content">
-                        <h3 class="project-title">Prototipo de Intercambiador de Calor</h3>
-                        <p class="project-description">
-                            Desarrollo de intercambiador de calor de alta eficiencia mediante simulación CFD 
-                            y análisis térmico. Incremento de transferencia de calor del 25%.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">CATIA</span>
-                            <span class="tech-tag">COMSOL</span>
-                            <span class="tech-tag">CFD</span>
+                <div class="specialties fade-in">
+                    <h3>Especialidades</h3>
+                    <ul class="specialty-list">
+                        <li><strong>Diseño de Máquinas:</strong> Desarrollo de sistemas mecánicos complejos y maquinaria industrial</li>
+                        <li><strong>Análisis Estructural:</strong> FEA, análisis modal, térmico y de fatiga</li>
+                        <li><strong>Diseño para Manufactura:</strong> Optimización de diseños para procesos productivos</li>
+                        <li><strong>Diseño Ergonómico:</strong> Interfaces hombre-máquina y factores humanos</li>
+                        <li><strong>Reverse Engineering:</strong> Digitalización y rediseño de componentes existentes</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image fade-in">
+                    👨‍💼
+                </div>
+                <div class="about-content fade-in">
+                    <h3>Heyber Niño Pacheco</h3>
+                    <p class="about-text">
+                        Ingeniero Mecánico con 3 años de experiencia especializado en diseño 3D y simulación. 
+                        Mi enfoque se centra en la funcionalidad, precisión y manufacturabilidad de cada proyecto. 
+                        He trabajado en diversas industrias, desde automotriz hasta aeroespacial, siempre buscando 
+                        soluciones innovadoras que optimicen rendimiento y reduzcan costos.
+                    </p>
+                    <p class="about-text">
+                        <strong>Filosofía de diseño:</strong> "Diseñando el futuro, una pieza a la vez" - 
+                        Cada componente debe ser funcional, eficiente y manufactureable.
+                    </p>
+                    
+                    <h4 style="color: var(--primary-blue); margin-bottom: 1rem;">Proceso de Trabajo</h4>
+                    <div class="process-steps">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <strong>Análisis</strong><br>
+                            Requisitos y restricciones
                         </div>
-                        <div class="project-links">
-                            <a href="#" class="project-link">Ver Detalles →</a>
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <strong>Diseño</strong><br>
+                            Modelado 3D paramétrico
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <strong>Simulación</strong><br>
+                            Validación virtual FEA
+                        </div>
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <strong>Optimización</strong><br>
+                            Refinamiento y DFM
                         </div>
                     </div>
                 </div>
@@ -820,42 +1161,154 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contacto">
-        <div class="contact-container">
-            <h2 class="contact-title">Conversemos sobre tu próximo proyecto</h2>
-            <p class="contact-description">
-                Estoy disponible para proyectos de diseño mecánico, consultoría técnica 
-                y desarrollo de soluciones de ingeniería personalizadas.
-            </p>
-            <div class="cta-buttons">
-                <a href="mailto:contacto@ingeniero.com" class="btn-primary">
-                    ✉️ Enviar Email
-                </a>
-                <a href="#" class="btn-secondary">
-                    📄 Descargar CV
-                </a>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Testimonios</h2>
+                <p>Lo que dicen mis clientes sobre mi trabajo</p>
             </div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon">📧</div>
-                    <div>
-                        <h4>Email</h4>
-                        <p>heibermec@gmail.com</p>
-                    </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        Heyber entregó un diseño excepcional para nuestro sistema de transmisión. 
+                        Su análisis FEA fue crucial para optimizar el peso sin comprometer la resistencia. 
+                        Cumplió todos los plazos establecidos.
+                    </p>
+                    <div class="testimonial-author">Ing. Carlos Mendoza</div>
+                    <div class="testimonial-role">Gerente de Ingeniería - AutoTech Solutions</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">💼</div>
-                    <div>
-                        <h4>LinkedIn</h4>
-                        <p>www.linkedin.com/in/hsaidniop</p>
-                    </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        El trabajo de simulación estructural que realizó para nuestro puente peatonal 
+                        superó nuestras expectativas. Los análisis fueron detallados y las 
+                        recomendaciones muy acertadas.
+                    </p>
+                    <div class="testimonial-author">Arq. María González</div>
+                    <div class="testimonial-role">Directora de Proyectos - Constructora Moderna</div>
                 </div>
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <h4>Ubicación</h4>
-                        <p>Arauca, Colombia</p>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">
+                        Su expertise en SolidWorks nos ayudó a automatizar nuestros procesos de diseño. 
+                        Los macros desarrollados redujeron nuestros tiempos de diseño en un 40%.
+                    </p>
+                    <div class="testimonial-author">Ing. Roberto Silva</div>
+                    <div class="testimonial-role">Jefe de Diseño - Industrias Mecánicas del Norte</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Contacto</h2>
+                <p>¿Listo para llevar tu proyecto al siguiente nivel?</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-form fade-in">
+                    <form id="contactForm" onsubmit="submitForm(event)">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo</label>
+                            <input type="text" id="nombre" name="nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Empresa</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="proyecto">Tipo de Proyecto</label>
+                            <select id="proyecto" name="proyecto" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="diseno-nuevo">Diseño Nuevo</option>
+                                <option value="modificacion">Modificación de Diseño</option>
+                                <option value="analisis-fea">Análisis FEA</option>
+                                <option value="automatizacion">Automatización CAD</option>
+                                <option value="consultoria">Consultoría Técnica</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="industria">Industria</label>
+                            <select id="industria" name="industria">
+                                <option value="">Selecciona una opción</option>
+                                <option value="automotriz">Automotriz</option>
+                                <option value="aeroespacial">Aeroespacial</option>
+                                <option value="industrial">Maquinaria Industrial</option>
+                                <option value="medica">Dispositivos Médicos</option>
+                                <option value="energia">Energía</option>
+                                <option value="otra">Otra</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="timeline">Timeline Estimado</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Selecciona una opción</option>
+                                <option value="urgente">Menos de 1 semana</option>
+                                <option value="corto">1-2 semanas</option>
+                                <option value="medio">1 mes</option>
+                                <option value="largo">2-3 meses</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="presupuesto">Presupuesto Aproximado (USD)</label>
+                            <select id="presupuesto" name="presupuesto">
+                                <option value="">Selecciona un rango</option>
+                                <option value="500-1000">$500 - $1,000</option>
+                                <option value="1000-3000">$1,000 - $3,000</option>
+                                <option value="3000-5000">$3,000 - $5,000</option>
+                                <option value="5000+">$5,000+</option>
+                                <option value="consultar">A consultar</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripción del Proyecto</label>
+                            <textarea id="descripcion" name="descripcion" rows="4" placeholder="Describe brevemente tu proyecto, requisitos técnicos y objetivos..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Consulta</button>
+                    </form>
+                </div>
+                <div class="contact-info fade-in">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <strong>Email</strong><br>
+                            heibermec@gmail.com
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <div>
+                            <strong>Teléfono</strong><br>
+                            +57 3132325992
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <div>
+                            <strong>Ubicación</strong><br>
+                            Arauca, Colombia
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💼</span>
+                        <div>
+                            <strong>LinkedIn</strong><br>
+                            www.linkedin.com/in/hsaidniop
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⏰</span>
+                        <div>
+                            <strong>Horario de Atención</strong><br>
+                            Lun - Vie: 8:00 AM - 6:00 PM
+                        </div>
                     </div>
                 </div>
             </div>
@@ -863,23 +1316,307 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Ingeniero Mecánico - Especialista en Diseño CAD. Todos los derechos reservados.</p>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Heyber Niño Pacheco - Ingeniero Mecánico. Diseñando el futuro, una pieza a la vez.</p>
+        </div>
     </footer>
 
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
     <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+        // Variables globales
+        let currentFilter = 'all';
+
+        // Loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+            }, 1000);
         });
 
-        // Header scroll
+        // Toggle mobile menu
+        function toggleMenu() {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('show');
+        }
+
+        // Smooth scrolling
+        function scrollTo(elementId) {
+            const element = document.getElementById(elementId);
+            const headerHeight = document.querySelector('header').offsetHeight;
+            const elementPosition = element.offsetTop - headerHeight;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+
+            // Close mobile menu if open
+            document.getElementById('nav-menu').classList.remove('show');
+        }
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Animate skill bars
+                    if (entry.target.classList.contains('software-skills')) {
+                        animateSkillBars();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(el => observer.observe(el));
+        });
+
+        // Animate skill bars
+        function animateSkillBars() {
+            const skillBars = document.querySelectorAll('.skill-progress');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+
+        // Portfolio filter
+        function filterProjects(category) {
+            currentFilter = category;
+            const projects = document.querySelectorAll('.project-card');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update active filter button
+            filterBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter projects
+            projects.forEach(project => {
+                if (category === 'all' || project.getAttribute('data-category') === category) {
+                    project.classList.remove('hidden');
+                } else {
+                    project.classList.add('hidden');
+                }
+            });
+        }
+
+        // Modal functionality
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalContent = document.getElementById('modalContent');
+            
+            const projectData = {
+                turbina: {
+                    title: 'Diseño de Turbina de Avión',
+                    tech: 'SolidWorks • ANSYS • CFD',
+                    description: 'Desarrollo completo de una turbina aeronáutica de alta eficiencia con optimización aerodinámica avanzada.',
+                    challenges: [
+                        'Optimización aerodinámica para máxima eficiencia',
+                        'Análisis de fluidos computacional (CFD)',
+                        'Resistencia a altas temperaturas y presiones',
+                        'Minimización de vibraciones'
+                    ],
+                    results: [
+                        '15% mejora en eficiencia energética',
+                        'Reducción de 20% en peso total',
+                        'Cumplimiento de estándares aeronáuticos internacionales',
+                        'Tiempo de desarrollo: 8 semanas'
+                    ]
+                },
+                diferencial: {
+                    title: 'Sistema Diferencial Automotriz',
+                    tech: 'SolidWorks • Simulation • DFM',
+                    description: 'Diseño y optimización de diferencial automotriz para vehículo de alta gama con análisis completo de durabilidad.',
+                    challenges: [
+                        'Optimización de torque y tracción',
+                        'Análisis de fatiga y durabilidad',
+                        'Diseño para manufactura en serie',
+                        'Reducción de ruido y vibraciones'
+                    ],
+                    results: [
+                        '25% reducción en ruido operacional',
+                        'Mejora en durabilidad de 150,000 km',
+                        'Optimización para producción masiva',
+                        'Ahorro del 12% en costos de manufactura'
+                    ]
+                },
+                protesis: {
+                    title: 'Prótesis de Rodilla con Análisis FEA',
+                    tech: 'SolidWorks • ANSYS • Biomecánica',
+                    description: 'Desarrollo de prótesis de rodilla biomimética con análisis estructural y validación biomecánica avanzada.',
+                    challenges: [
+                        'Simulación de cargas biomecánicas',
+                        'Materiales biocompatibles',
+                        'Rango de movimiento natural',
+                        'Durabilidad a largo plazo'
+                    ],
+                    results: [
+                        'Rango de flexión de 0° a 135°',
+                        'Vida útil estimada de 15 años',
+                        'Reducción del 30% en peso vs. competencia',
+                        'Validación clínica exitosa'
+                    ]
+                },
+                puente: {
+                    title: 'Estructura de Puente con Análisis FEA',
+                    tech: 'SolidWorks • ANSYS • Estructural',
+                    description: 'Diseño estructural de puente peatonal moderno con análisis completo de cargas dinámicas y sísmicas.',
+                    challenges: [
+                        'Análisis de cargas dinámicas peatonales',
+                        'Resistencia sísmica',
+                        'Optimización de peso estructural',
+                        'Cumplimiento normativo'
+                    ],
+                    results: [
+                        'Capacidad para 500 personas simultáneamente',
+                        'Resistencia sísmica grado 8',
+                        '35% reducción en acero estructural',
+                        'Certificación estructural completa'
+                    ]
+                },
+                componentes: {
+                    title: 'Componentes Aeroespaciales Ligeros',
+                    tech: 'SolidWorks • Topology Optimization',
+                    description: 'Desarrollo de componentes ultraligeros mediante optimización topológica para aplicaciones aeroespaciales críticas.',
+                    challenges: [
+                        'Máxima reducción de peso',
+                        'Mantenimiento de resistencia estructural',
+                        'Manufactura compleja',
+                        'Estándares aeroespaciales'
+                    ],
+                    results: [
+                        '60% reducción en peso',
+                        'Mantenimiento de factor de seguridad 4:1',
+                        'Preparación para manufactura aditiva',
+                        'Certificación aeroespacial AS9100'
+                    ]
+                },
+                caja: {
+                    title: 'Caja de Cambios Automatizada',
+                    tech: 'SolidWorks • Motion Study • FEA',
+                    description: 'Diseño integral de transmisión automática con estudio de movimiento y análisis completo de durabilidad.',
+                    challenges: [
+                        'Sincronización precisa de cambios',
+                        'Análisis de durabilidad de engranajes',
+                        'Control de temperatura operacional',
+                        'Eficiencia energética'
+                    ],
+                    results: [
+                        'Tiempo de cambio menor a 150ms',
+                        'Eficiencia del 97% en transmisión',
+                        'Durabilidad validada 300,000 km',
+                        'Reducción del 8% en consumo combustible'
+                    ]
+                }
+            };
+
+            const project = projectData[projectId];
+            if (project) {
+                modalContent.innerHTML = `
+                    <h2>${project.title}</h2>
+                    <p class="project-tech" style="color: var(--tech-orange); font-weight: 500; margin-bottom: 1rem;">${project.tech}</p>
+                    <p style="margin-bottom: 2rem; font-size: 1.1rem; line-height: 1.6;">${project.description}</p>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                        <div>
+                            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Desafíos de Ingeniería</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                ${project.challenges.map(challenge => `<li style="padding: 0.5rem 0; border-left: 3px solid var(--tech-orange); padding-left: 1rem; margin-bottom: 0.5rem; background: var(--light-bg);">• ${challenge}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary-blue); margin-bottom: 1rem;">Resultados Obtenidos</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                ${project.results.map(result => `<li style="padding: 0.5rem 0; border-left: 3px solid var(--primary-blue); padding-left: 1rem; margin-bottom: 0.5rem; background: var(--light-bg);">✓ ${result}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button onclick="scrollTo('contacto'); closeModal();" class="btn btn-primary">Solicitar Proyecto Similar</button>
+                    </div>
+                `;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.nombre || !data.email || !data.proyecto) {
+                alert('Por favor completa todos los campos obligatorios.');
+                return;
+            }
+            
+            // Simulate form submission
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            
+            submitBtn.textContent = 'Enviando...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('¡Gracias por tu consulta! Te contactaré dentro de las próximas 24 horas para discutir tu proyecto.');
+                event.target.reset();
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
+        }
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any initialization code here
+            console.log('HN Engineering Portfolio loaded successfully');
+        });
+    </script>
+</body>
+</html>
